@@ -14,38 +14,38 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    private UserRepository repo;
+    private UserRepository userRepository;
 
-    public List<User> findAll() {
-        return repo.findAll();
+    public List<User> buscarTodosOsUsuarios() {
+        return userRepository.findAll();
     }
 
-    public User findById(String id) {
-        Optional<User> obj = repo.findById(id);
-        return obj.orElseThrow(() -> new NoSuchElementException("Objeto não encontrado"));
+    public User buscarUsuarioPorId(String id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.orElseThrow(() -> new NoSuchElementException("Objeto não encontrado"));
     }
 
-    public User insert(User obj) {
-        return repo.insert(obj);
+    public User inserirUsuario(User user) {
+        return userRepository.insert(user);
     }
 
-    public void delete(String id) {
-        findById(id);
-        repo.deleteById(id);
+    public void deletarUsuario(String id) {
+        buscarUsuarioPorId(id);
+        userRepository.deleteById(id);
     }
 
-    public User update(User obj) {
-        User newObj = findById(obj.getId());
-        updateData(newObj, obj);
-        return repo.save(newObj);
+    public User atualizarUsuario(User user) {
+        User novoUsuario = buscarUsuarioPorId(user.getId());
+        atualizarDados(novoUsuario, user);
+        return userRepository.save(novoUsuario);
     }
 
-    private void updateData(User newObj, User obj) {
-        newObj.setName(obj.getName());
-        newObj.setEmail(obj.getEmail());
+    private void atualizarDados(User newUser, User user) {
+        newUser.setName(user.getName());
+        newUser.setEmail(user.getEmail());
     }
 
-    public User fromDTO(UserDTO objDto) {
-        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
+    public User pegarDoDto(UserDTO userDto) {
+        return new User(userDto.getId(), userDto.getName(), userDto.getEmail());
     }
 }
