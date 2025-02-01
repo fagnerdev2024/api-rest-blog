@@ -3,7 +3,6 @@ package com.fagnerdev.api_rest_blog.services;
 import com.fagnerdev.api_rest_blog.domain.User;
 import com.fagnerdev.api_rest_blog.dto.UserDTO;
 import com.fagnerdev.api_rest_blog.repository.UserRepository;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
