@@ -1,11 +1,14 @@
 package com.fagnerdev.api_rest_blog.domain;
 
+import com.fagnerdev.api_rest_blog.dto.AuthorDTO;
+import com.fagnerdev.api_rest_blog.dto.CommentDTO;
 import jakarta.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Document
 public class Post implements Serializable {

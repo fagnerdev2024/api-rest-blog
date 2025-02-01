@@ -2,6 +2,8 @@ package com.fagnerdev.api_rest_blog.controllers;
 
 import com.fagnerdev.api_rest_blog.domain.Post;
 import com.fagnerdev.api_rest_blog.domain.User;
+import com.fagnerdev.api_rest_blog.dto.UserDTO;
+import com.fagnerdev.api_rest_blog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
