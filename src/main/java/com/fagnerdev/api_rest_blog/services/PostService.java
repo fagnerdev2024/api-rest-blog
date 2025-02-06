@@ -2,7 +2,6 @@ package com.fagnerdev.api_rest_blog.services;
 
 import com.fagnerdev.api_rest_blog.domain.Post;
 import com.fagnerdev.api_rest_blog.repository.PostRepository;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,19 +14,19 @@ import java.util.Optional;
 public class PostService {
 
     @Autowired
-    private PostRepository repo;
+    private PostRepository postRepository;
 
     public Post findById(String id) {
-        Optional<Post> obj = repo.findById(id);
-        return obj.orElseThrow(() -> new NoSuchElementException("Objeto não encontrado"));
+        Optional<Post> post = postRepository.findById(id);
+        return post.orElseThrow(() -> new NoSuchElementException("Objeto não encontrado"));
     }
 
     public List<Post> findByTitle(String text) {
-        return repo.searchTitle(text);
+        return postRepository.searchTitle(text);
     }
 
     public List<Post> fullSearch(String text, Date minDate, Date maxDate) {
         maxDate = new Date(maxDate.getTime() + 24 * 60 * 60 * 1000);
-        return repo.fullSearch(text, minDate, maxDate);
+        return postRepository.fullSearch(text, minDate, maxDate);
     }
 }
