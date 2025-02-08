@@ -30,6 +30,8 @@ public class PostController {
         return ResponseEntity.ok().body(list);
     }
 
+
+
     @RequestMapping(value="/fullsearch", method=RequestMethod.GET)
     public ResponseEntity<List<Post>> fullSearch(
             @RequestParam(value="text", defaultValue="") String text,
